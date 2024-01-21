@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('file:///C:/Users/ccs96/Desktop/庫存管理/林口長庚外景.jpg'); /*桌面上圖片的正確路徑*/
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            display: grid;
+            background-attachment: fixed; /* 將背景圖片固定 */
+            grid-template-columns: repeat(3, 1fr); /* 將方框排列成一排三個 */
+    height: 100vh;
+        }
+        .menu-toggle {
+            position: fixed;
+            font-size: 30px;
+            top: 30px;
+            right: 30px;
+            cursor: pointer;
+            z-index: 2;
+            color: #fefefe;
+        }
+
+        .sidebar {
+            width: 0;
+            height: 100%;
+            background-color: rgba(97, 105, 102, 0.888);
+            position: fixed;
+            top: 0;
+            right: 0;
+            overflow-x: hidden;
+            transition: width 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .menu-item {
+            margin-bottom: 50px;
+            cursor: pointer;
+        }
+
+        .content {
+            margin-right: 0;
+            padding: 20px;
+            flex: 1;
+            margin-top: 80px; /* 將主內容往下移動 */
+        }
+        .header {
+            padding: 20px;
+            text-align: left;
+            color: #fff; /* 文字顏色 */
+            position: fixed; /* 將文字固定在螢幕上方 */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 背景色透明度 */
+            z-index: 1; /* 確保文字在最上層 */
+            font-size: 50px; /* 調整文字大小 */
+        }
+
+        .box {
+            background-color: rgba(235, 237, 246, 0.863); /* 半透明白色背景 */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            margin: 20px;
+            position: relative;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 40vh;
+            transition: background-color 0.3s ease; /* 添加過渡效果 */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* 將文字移到左上角 */
+            justify-content: flex-start; /* 將文字移到左上角 */
+            overflow: hidden; /* 用於裁剪文字底部溢出 */
+
+        }
+        .box:hover {
+            filter: brightness(0.5); /* 游標移到方框時的亮度變化 */
+        }
+    
+        .box a {
+            display: block;
+            width: 50%;
+            height: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .box1 {
+            background-image: url('file:///C:/Users/ccs96/Desktop/庫存管理/DXC700AU.jpg'); /* 替換為你桌面上圖片的正確路徑 */
+            
+        }
+
+        .box2 {
+            background-image: url('file:///C:/Users/ccs96/Desktop/庫存管理/DXI800.jpg'); /* 替換為你桌面上圖片的正確路徑 */
+        }
+
+        .box3 {
+            background-image: url('file:///C:/Users/ccs96/Desktop/庫存管理/H008a.jpg'); /* 替換為你桌面上圖片的正確路徑 */
+        }
+
+        .box4 {
+            background-image: url('file:///C:/Users/ccs96/Desktop/庫存管理/H008a.jpg'); /* 替換為你桌面上圖片的正確路徑 */
+        }
+
+        .box5 {
+            background-image: url('file:///C:/Users/ccs96/Desktop/庫存管理/Dimension.png'); /* 替換為你桌面上圖片的正確路徑 */
+        }
+
+        .box6 {
+            background-image: url('file:///C:/Users/ccs96/Desktop/庫存管理/其餘機台.jpg'); /* 替換為你桌面上圖片的正確路徑 */
+        }
+
+        .box-text {
+            font-size: 28px;
+            font-weight: bold; /* 將文字設為粗體 */
+            color: #333; /* 文字顏色 */
+            background-color: rgba(31, 250, 119, 0.434); /* 文字背景顏色，半透明 */
+            padding: 10px; /* 文字內邊距 */
+            border-radius: 5px; /* 文字背景的圓角 */
+        }
+        /* 調整最上一排的方框的上邊距，使其不遮擋到首頁的文字 */
+        .box:nth-child(1),
+        .box:nth-child(2),
+        .box:nth-child(3) {
+            margin-top: 200px; /* 這裡可以根據需要調整上邊距的值 */
+        }
+          /* 調整右邊選單的寬度 */
+          .sidebar.open {
+            width: 150px;
+        }
+        .toggle-btn {
+            font-size: 50px;
+            color: #fff;
+            cursor: pointer;
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            z-index: 3;
+        }
+
+        .toggle-btn:hover {
+            color: #122ddd;
+        }
+
+        /* hover時展開選單 */
+        .sidebar:hover {
+            width: 200px; /* 展開時的寬度 */
+        }
+
+    
+        .editor-text {
+            font-size: 500px; /* 調整編輯文字大小 */
+            margin-bottom: 20px; /* 與方框之間增加一欄空隙 */
+            color: #fff; /* 文字顏色 */
+            background-color: rgba(0, 0, 0, 0.5); /* 背景色透明度 */
+            padding: 10px; /* 文字內邊距 */
+            border-radius: 5px; /* 文字背景的圓角 */
+          
+        }
+
+
+        .additional-text {
+            grid-column: span 3; /* 跨足三列 */
+            font-size: 30px; /* 調整編輯文字大小 */
+            margin: 20px;
+            padding: 10px;
+            color: #0b0b0b;
+            font-weight: bold; /* 將文字設為粗體 */
+            left: 0;
+            width: 100%;
+            z-index: 1; /* 確保文字在最上層 */
+            position: absolute; /* 將文字區塊設為絕對定位 */
+            top: 100px; /* 距離頂部的距離，可根據需要調整 */
+            left: 50%; /* 文字水平置中 */
+            transform: translateX(-50%); /* 調整文字水平位置 */
+        }
+        
+
+        
+    </style>
+</head>
+<body>
+    <div class="box box1">
+        <a href="https://docs.google.com/spreadsheets/d/19vpiIYCpuFdcH0XToFmnyRisJsUOzvIYCAfsEe747N0/edit?usp=sharing" target="_blank"></a>
+        <div class="box-text" contenteditable="true">DXC700AU 試藥登入</div>
+    </div>
+    <div class="box box2">
+        <a href="https://docs.google.com/spreadsheets/d/1Iv3kS578kvMN67CLiAmlwbxumF16gc2jUdRfeuTgYwk/edit?usp=sharing" target="_blank"></a>
+        <div class="box-text" contenteditable="true">DXI800 試藥登入</div>
+    </div>
+    <div class="box box3">
+        <a href="https://docs.google.com/spreadsheets/d/1fMtZ0MOvDxQhpsRwmS3uI7SDoBeQ-wL22xpDZCNc-xw/edit?usp=sharing" target="_blank"></a>
+        <div class="box-text" contenteditable="true">H008 試藥登入</div>
+    </div>
+    <div class="box box4">
+        <a href="https://docs.google.com/spreadsheets/d/1_p47qx1-KfoIZLkBlpyvExeodS1s5lmKFmRV8DcCPDE/edit?usp=sharing" target="_blank"></a>
+        <div class="box-text" contenteditable="true">H008(濫用藥物) 試藥登入</div>
+    </div>
+    <div class="box box5">
+        <a href="https://docs.google.com/spreadsheets/d/1yjTi_5J7kCJtY0gAkV1DATmaMi18l-rjJn0GRjgMO_U/edit?usp=sharing" target="_blank"></a>
+        <div class="box-text" contenteditable="true">Dimension 試藥登入</div>
+    </div>
+    <div class="box box6">
+        <a href="https://docs.google.com/spreadsheets/d/10vxBbJQU-Kj8A6J3_CV4LnkUR7oXRC5NG6dP2EXi3-c/edit?usp=sharing" target="_blank"></a>
+        <div class="box-text" contenteditable="true">Alinity/OSMO/Ketone 試藥登入</div>
+    </div>
+</div>
+   
+
+    <div class="menu-toggle" onmouseover="showSidebar()" onmouseout="hideSidebar()">☰選單☰ </div>
+    <div class="sidebar" id="sidebar" onmouseover="showSidebar()" onmouseout="hideSidebar()">
+        <div class="menu-item">
+            <a href="https://example.com" target="_blank">Section 1</a>
+        </div>
+        <div class="menu-item">
+            <a href="https://example.com" target="_blank">Section 2</a>
+        </div>
+        <div class="menu-item">
+            <a href="https://example.com" target="_blank">Section 3</a>
+        </div>
+    </div>
+    <div class="content">
+    <div class="header" contenteditable="true">生化軌道組-試藥庫存登入網頁</div>
+    <div class="additional-text" contenteditable="true">每月上旬(7號~12號)及下旬(25號~30號)都要記得盤點自己管理的試藥喔</div>
+
+    
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+            }
+            function showSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            sidebar.classList.add('open');
+        }
+
+        function hideSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            sidebar.classList.remove('open');
+        }
+    </script>
+</html>
