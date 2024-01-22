@@ -81,12 +81,16 @@
             var errorMessage = document.getElementById('errorMessage');
 
             // 簡單的帳號密碼驗證
-            if (username === '39222' && password === '39222') {
+            if ((username === '39222' && password === '39222')|| (username === 'admin' && password === 'admin')) {
                 // 登入成功
                 errorMessage.innerHTML = '';
                 alert('登入成功');
                 // 導向到 home.html
-                window.location.href = "home.html";
+                if (username === 'admin') {
+                    window.location.href = "home2.html";
+                } else {
+                    window.location.href = "home.html";
+                }
             } else {
                 // 登入失敗
                 errorMessage.innerHTML = '帳號密碼錯誤';
