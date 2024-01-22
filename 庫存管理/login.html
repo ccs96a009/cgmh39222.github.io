@@ -8,7 +8,108 @@
         body {
             margin: 0;
             padding: 0;
-            background-image: url('https://i.imgur.com/Gxgt9co.jpg');
+            background-image: url('<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('ttps://lurl.cc/6BQn0');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 80%; /* 設定容器寬度 */
+            max-width: 400px; /* 設定最大寬度，避免在大螢幕上過寬 */
+            text-align: center;
+            background-color: rgba(112, 248, 180, 0.873); /* 半透明白色背景 */
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #3b39c5;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>生化軌道組庫存管理系統登入</h2>
+        <form id="loginForm">
+            <label for="username">帳號:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">密碼:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="button" onclick="validateLogin()">Login</button>
+        </form>
+        <p id="errorMessage" class="error-message"></p>
+    </div>
+
+    <script>
+        function validateLogin() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var errorMessage = document.getElementById('errorMessage');
+
+          // 簡單的帳號密碼驗證
+          if (username === 'admin' && password === 'admin') {
+                // 登入成功
+                errorMessage.innerHTML = '';
+                alert('登入成功');
+                window.location.href = 'home.html';
+            } else if (username === '39222' && password === '39222') {
+                // 登入成功，但是不是 admin
+                errorMessage.innerHTML = '';
+                alert('登入成功');
+                window.location.href = 'home.html';
+            } else {
+                // 登入失敗
+                errorMessage.innerHTML = '帳號密碼錯誤';
+            }
+        }
+    </script>
+</body>
+</html>
+');
             background-size: cover;
             background-position: center;
             font-family: Arial, sans-serif;
