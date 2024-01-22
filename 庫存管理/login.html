@@ -19,7 +19,8 @@
         }
 
         .container {
-            width: 350px;
+            width: 80%; /* 設定容器寬度 */
+            max-width: 400px; /* 設定最大寬度，避免在大螢幕上過寬 */
             text-align: center;
             background-color: rgba(112, 248, 180, 0.873); /* 半透明白色背景 */
             padding: 50px;
@@ -84,9 +85,8 @@
                 // 登入成功
                 errorMessage.innerHTML = '';
                 alert('登入成功');
-
-window. location.href="home.html";
-
+                // 導向到 home.html
+                window.location.href = "home.html";
             } else {
                 // 登入失敗
                 errorMessage.innerHTML = '帳號密碼錯誤';
@@ -95,4 +95,5 @@ window. location.href="home.html";
     </script>
 </body>
 </html>
+
 
