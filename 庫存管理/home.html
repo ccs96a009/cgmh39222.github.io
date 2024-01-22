@@ -251,17 +251,17 @@
 
     <div class="menu-toggle" onmouseover="showSidebar()" onmouseout="hideSidebar()">☰選單☰ </div>
     <div class="sidebar" id="sidebar" onmouseover="showSidebar()" onmouseout="hideSidebar()">
-        <div class="menu-item">
+        <div class="menu-item" contenteditable="true">
             <a href="https://example.com" target="_blank">Section 1</a>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" contenteditable="true">
             <a href="https://example.com" target="_blank">Section 2</a>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" contenteditable="false">
             <a href="login.html" target="_blank">管理者模式</a>
         </div>
     </div>
-    <div class="content">
+    <div class="content" id="content" contenteditable="false">
     <div class="header" contenteditable="false">生化軌道組-試藥庫存登入網頁</div>
     <div class="additional-text" contenteditable="false">每月上旬(7號~12號)及下旬(25號~30號)都要記得盤點自己管理的試藥喔</div>
 
@@ -280,5 +280,23 @@
             var sidebar = document.getElementById('sidebar');
             sidebar.classList.remove('open');
         }
-    </script>
+        
+
+        var isAdmin = false;  // 預設為非 admin
+
+// 在這裡加入判斷是否為 admin 的邏輯
+// 這個判斷邏輯可以根據實際情況修改，例如可以根據登入的帳號進行判斷
+var loggedInUser = 'admin';  // 這裡假設已經有登入的使用者資訊
+if (loggedInUser === 'admin') {
+    isAdmin = true;  // 如果是 admin，設定為 true
+    setEditMode(true);  // 設定為可編輯
+} else {
+    setEditMode(false);  // 非 admin，設定為不可編輯
+}
+
+function setEditMode(isAdmin) {
+    var contentElement = document.getElementById('content');
+    contentElement.contentEditable = isAdmin; // true 可編輯，false 不可編輯
+}
+</script>
 </html>
