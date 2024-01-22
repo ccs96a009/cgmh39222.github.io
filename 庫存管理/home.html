@@ -249,22 +249,22 @@
 </div>
    
 
-    <div class="menu-toggle" onmouseover="showSidebar()" onmouseout="hideSidebar()">☰選單☰ </div>
-    <div class="sidebar" id="sidebar" onmouseover="showSidebar()" onmouseout="hideSidebar()">
-        <div class="menu-item" contenteditable="true">
-            <a href="https://example.com" target="_blank">Section 1</a>
-        </div>
-        <div class="menu-item" contenteditable="true">
-            <a href="https://example.com" target="_blank">Section 2</a>
-        </div>
-        <div class="menu-item" contenteditable="false">
-            <a href="login.html" target="_blank">管理者模式</a>
-        </div>
+<div class="menu-toggle" onmouseover="showSidebar()" onmouseout="hideSidebar()">☰選單☰ </div>
+<div class="sidebar" id="sidebar" onmouseover="showSidebar()" onmouseout="hideSidebar()">
+    <div class="menu-item" contenteditable="false">
+        <a href="https://example.com" target="_blank">Section 1</a>
     </div>
-    <div class="content" id="content" contenteditable="false">
-    <div class="header" contenteditable="false">生化軌道組-試藥庫存登入網頁</div>
-    <div class="additional-text" contenteditable="false">每月上旬(7號~12號)及下旬(25號~30號)都要記得盤點自己管理的試藥喔</div>
-
+    <div class="menu-item" contenteditable="false">
+        <a href="https://example.com" target="_blank">Section 2</a>
+    </div>
+    <div class="menu-item" contenteditable="false">
+        <a href="login.html" target="_blank">管理者模式</a>
+    </div>
+</div>
+<div class="content" id="content" contenteditable="true">
+    <div class="header">生化軌道組-試藥庫存登入網頁</div>
+    <div class="additional-text">每月上旬(7號~12號)及下旬(25號~30號)都要記得盤點自己管理的試藥喔</div>
+</div>
     
     <script>
         function toggleSidebar() {
@@ -298,5 +298,32 @@ function setEditMode(isAdmin) {
     var contentElement = document.getElementById('content');
     contentElement.contentEditable = isAdmin; // true 可編輯，false 不可編輯
 }
+function contentChanged(element) {
+            // 取得內容變更後的內容
+            var updatedContent = element.innerHTML;
+            
+            // 在這裡添加處理內容變更後的相應邏輯
+            github.oi("內容已更新：" + updatedContent);
+
+            // 如果需要將內容保存到伺服器，可以在這裡發送相應的請求
+            // 例如使用 fetch API 將更新後的內容發送到伺服器
+            // fetch('https://your-server-url/save-content', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify({ content: updatedContent }),
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     console.log('內容已保存到伺服器:', data);
+            // })
+            // .catch(error => {
+            //     console.error('錯誤:', error);
+            // });
+        }
+    </script>
+</body>
+</html>
 </script>
 </html>
