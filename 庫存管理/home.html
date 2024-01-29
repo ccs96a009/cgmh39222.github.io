@@ -31,10 +31,10 @@
             height: 100%;
             background-color: rgba(97, 105, 102, 0.888);
             position: fixed;
-            top: 0;
+            top:106px;
             right: 0;
             overflow-x: hidden;
-            transition: width 0.3s;
+            transition: width 1s;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -44,7 +44,8 @@
 
         .menu-item {
             margin-bottom: 50px;
-            font-size: 20px;
+            font-size: 25px;
+            
             font-weight: bold; /* 將文字設為粗體 */
             color: #efe8e8; /* 文字顏色 */
             cursor: pointer;
@@ -141,7 +142,7 @@
         }
           /* 調整右邊選單的寬度 */
           .sidebar.open {
-            width: 150px;
+            width: 300px;
         }
         .toggle-btn {
             font-size: 50px;
@@ -159,7 +160,7 @@
 
         /* hover時展開選單 */
         .sidebar:hover {
-            width: 200px; /* 展開時的寬度 */
+            width: 300px; /* 展開時的寬度 */
         }
 
     
@@ -254,13 +255,25 @@
 </div>
    
 
-<div class="menu-toggle" onmouseover="showSidebar()" onmouseout="hideSidebar()">☰選單☰ </div>
+<div class="menu-toggle" onmouseover="showSidebar()" onmouseout="hideSidebar()">☰統計資料☰ </div>
 <div class="sidebar" id="sidebar" onmouseover="showSidebar()" onmouseout="hideSidebar()">
     <div class="menu-item" contenteditable="false">
-        <a href="https://example.com" target="_blank">功能測試中</a>
+        <a href="https://docs.google.com/spreadsheets/d/1k43-IToDUjawZUG0UhVzw_ge48qKhq9oWxqO-ybYMfQ/edit?usp=sharing" target="_blank">DXC700AU </a>
     </div>
     <div class="menu-item" contenteditable="false">
-        <a href="https://example.com" target="_blank">功能測試中</a>
+        <a href="https://docs.google.com/spreadsheets/d/1c6wzji5mcsmTi91claxkE9VpwT9vO480Na7AtOeNEzw/edit?usp=sharing" target="_blank">DXI800 </a>
+    </div>
+    <div class="menu-item" contenteditable="false">
+        <a href="https://docs.google.com/spreadsheets/d/14CTdtTpXc7iOoqlatcb8IZJBp-e9lkuUF4tLDxqc-d0/edit?usp=sharing" target="_blank">Dimension </a>
+    </div>
+    <div class="menu-item" contenteditable="false">
+        <a href="https://docs.google.com/spreadsheets/d/1-qM3HY0tmhXTwAVRDcYYJYGbmSly5U4ptYoYpk2Oc7Y/edit?usp=sharing" target="_blank">H008 </a>
+    </div>
+    <div class="menu-item" contenteditable="false">
+        <a href="https://docs.google.com/spreadsheets/d/1hTV5Z5zXXjAHCwCAqVG0IZQrOStV06MTw0YYtYtNjFM/edit?usp=sharing" target="_blank">H008(濫用藥物) </a>
+    </div>
+    <div class="menu-item" contenteditable="false">
+        <a href="https://docs.google.com/spreadsheets/d/1MUMHDecbbTanzQUbi8II_TNTkd4CPl3cs488_xcrEtA/edit?usp=sharing" target="_blank">Alinity/OSMO/Ketone </a>
     </div>
     <div class="menu-item" contenteditable="false">
         <a href="login.html" target="_blank">登出</a>
@@ -268,7 +281,7 @@
 </div>
 <div class="content" id="content" contenteditable="true">
     <div class="header">生化軌道組-試藥庫存登入網頁</div>
-    <div class="additional-text">每月上旬(8號~12號)及下旬(25號~30號)都要記得盤點自己管理的試藥喔</div>
+    <div class="additional-text">請點擊機台名稱，開始登入試藥庫存量 (每月8號~12號 & 25號~30號)</div>
 </div>
     
     <script>
@@ -287,46 +300,7 @@
         }
         
 
-        var isAdmin = false;  // 預設為非 admin
-
-// 在這裡加入判斷是否為 admin 的邏輯
-// 這個判斷邏輯可以根據實際情況修改，例如可以根據登入的帳號進行判斷
-var loggedInUser = 'admin';  // 這裡假設已經有登入的使用者資訊
-if (loggedInUser === 'admin') {
-    isAdmin = true;  // 如果是 admin，設定為 true
-    setEditMode(true);  // 設定為可編輯
-} else {
-    setEditMode(false);  // 非 admin，設定為不可編輯
-}
-
-function setEditMode(isAdmin) {
-    var contentElement = document.getElementById('content');
-    contentElement.contentEditable = isAdmin; // true 可編輯，false 不可編輯
-}
-function contentChanged(element) {
-            // 取得內容變更後的內容
-            var updatedContent = element.innerHTML;
-            
-            // 在這裡添加處理內容變更後的相應邏輯
-            github.oi("內容已更新：" + updatedContent);
-
-            // 如果需要將內容保存到伺服器，可以在這裡發送相應的請求
-            // 例如使用 fetch API 將更新後的內容發送到伺服器
-            // fetch('https://your-server-url/save-content', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify({ content: updatedContent }),
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     console.log('內容已保存到伺服器:', data);
-            // })
-            // .catch(error => {
-            //     console.error('錯誤:', error);
-            // });
-        }
+       
         var inactivityTime = 0;
         var autoLogoutTime = 10 * 60 * 1000;  // 設定 10 分鐘自動登出時間（以毫秒為單位）
 
@@ -342,7 +316,7 @@ function contentChanged(element) {
             // 如果達到自動登出時間，執行登出操作
             if (inactivityTime >= autoLogoutTime) {
                 clearInterval(inactivityInterval);  // 停止定時器
-                alert("超過 15 分鐘未動作，網頁已自動登出!");
+                alert("超過 10 分鐘未動作，網頁已自動登出!");
                 window.location.href = 'login.html';  // 跳轉到登入頁面
             }
         }, 1000);
