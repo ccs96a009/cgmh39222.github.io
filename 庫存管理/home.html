@@ -193,23 +193,23 @@
         @media (max-width: 768px) {
             /* 在小於 768px 的螢幕寬度下，調整一些樣式 */
             body {
-                grid-template-columns: 1fr;
+                grid-template-columns: 5fr;
             }
             .header {
-                font-size: 25px;
+                font-size: 30px;
             }
             .box {
                 width: 80%; /* 調整方框的寬度 */
                 margin: 20px auto; /* 居中顯示 */
             }
             .content {
-                margin-top: 20px; /* 調整主內容的上邊距 */
+                margin-top: 10px; /* 調整主內容的上邊距 */
             }
             .toggle-btn {
-                font-size: 18px;
+                font-size: 100px;
             }
             .sidebar {
-                width: 100%;
+                width: 100px;
                 height: auto;
                 position: relative;
                 top: unset;
@@ -217,10 +217,22 @@
                 transition: none;
             }
             .sidebar.open {
-                width: 50%;
+                width: 100px;
+            }
+            .sidebar:hover {
+                width: 100px;
             }
             .additional-text{
-                font-size: 20px;
+                font-size: 30px;
+                position: absolute; /* 將文字區塊設為絕對定位 */
+                top: 70px; /* 距離頂部的距離，可根據需要調整 */
+                left: 50%; /* 文字水平置中 */
+                transform: translateX(-50%); /* 調整文字水平位置 */
+                }
+            .menu-toggle{
+                font-size: 20px; 
+                top: 40px;
+                right: 10px;
                 }
         }
 
