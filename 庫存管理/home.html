@@ -288,7 +288,7 @@
         <a href="https://docs.google.com/spreadsheets/d/1MUMHDecbbTanzQUbi8II_TNTkd4CPl3cs488_xcrEtA/edit?usp=sharing" target="_blank">Alinity/OSMO/Ketone </a>
     </div>
     <div class="menu-item" contenteditable="false">
-        <a href="login.html" target="_blank">登出</a>
+        <a href="login.html" onclick="logout()">登出</a>
     </div>
 </div>
 <div class="content" id="content" contenteditable="true">
@@ -310,7 +310,12 @@
             var sidebar = document.getElementById('sidebar');
             sidebar.classList.remove('open');
         }
-        
+        function logout() {
+        // 清除網頁畫面
+        document.body.innerHTML = '';
+        alert('登出成功');
+        window.location.href = 'login.html';  // 跳轉到登入頁面
+    }
 
        
         var inactivityTime = 0;
